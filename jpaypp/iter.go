@@ -13,6 +13,7 @@ type Iter struct {
 	qs     url.Values
 	values []interface{}
 	meta   ListMeta
+	params ListParams
 	err    error
 	cur    interface{}
 }
