@@ -29,6 +29,12 @@ type (
 		Callback    string                 `json:"callback"`
 	}
 
+	// ChargeListParams 列表查询请求 数据类型
+	ChargeListParams struct {
+		ListParams
+		Created int64
+	}
+
 	// Charge 数据类型
 	Charge struct {
 		ID              string                 `json:"id"`

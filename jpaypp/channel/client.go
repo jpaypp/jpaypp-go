@@ -3,7 +3,6 @@ package channel
 import (
 	"fmt"
 	"log"
-
 	jpaypp "github.com/jpaypp/jpaypp-go/jpaypp"
 )
 
