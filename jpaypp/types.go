@@ -221,3 +221,38 @@ type (
 		Values []*BatchWithdrawal `json:"data"`
 	}
 )
+
+
+
+//多级商户相关数据结构 V1.3 add
+type (
+	Channel struct {
+		Object      string                 `json:"object"`
+		Created     int64                  `json:"created"`
+		Channel     string                 `json:"channel"`
+		Params      map[string]interface{} `json:"params"`
+		Banned      bool                   `json:"banned"`
+		BannedMsg   string                 `json:"banned_msg"`
+		Description string                 `json:"description"`
+	}
+
+	ChannelParams struct {
+		Channel     string                 `json:"channel"`
+		Params      map[string]interface{} `json:"params"`
+		Banned      bool                   `json:"banned,omitempty"`
+		BannedMsg   string                 `json:"banned_msg,omitempty"`
+		Description string                 `json:"description,omitempty"`
+	}
+
+	ChannelUpdateParams struct {
+		Params      map[string]interface{} `json:"params,omitempty"`
+		Banned      bool                   `json:"banned,omitempty"`
+		BannedMsg   string                 `json:"banned_msg,omitempty"`
+		Description string                 `json:"description,omitempty"`
+	}
+
+	ChannelDeleteResult struct {
+		Deleted bool   `json:"deleted"`
+		Channel string `json:"channel"`
+	}
+)

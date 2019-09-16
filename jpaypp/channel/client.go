@@ -7,12 +7,12 @@ import (
 )
 
 type Client struct {
-	B   jpaypp.Backend
+	B   jpaypp.BackEnd
 	Key string
 }
 
 func getC() Client {
-	return Client{jpaypp.GetBackend(jpaypp.APIBackend), jpaypp.Key}
+	return Client{jpaypp.GetBackend(jpaypp.APIBackEnd), jpaypp.Key}
 }
 
 func New(appId, subAppId string, params *jpaypp.ChannelParams) (*jpaypp.Channel, error) {
