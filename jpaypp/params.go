@@ -1,4 +1,4 @@
-package pingpp
+package jpaypp
 
 import (
 	"fmt"
