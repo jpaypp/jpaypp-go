@@ -151,19 +151,14 @@ func (s *ApiBackEnd) Do(req *http.Request, v interface{}) error {
 			} else {
 				root := e.(map[string]interface{})
 				err := &Error{
-					Type:           ErrorType(root["type"].(string)),
-					Msg:            root["message"].(string),
-					HTTPStatusCode: res.StatusCode,
+					Status:           root["status"].(string),
+					Message:          root["message"].(string),
+					Data: 			  root["data"].(string),
 				}
 
-				if code, found := root["code"]; found {
-					err.Code = ErrorCode(code.(string))
+				if status, found := root["status"]; found {
+					err.Status = status.(string)
 				}
-
-				if param, found := root["param"]; found {
-					err.Param = param.(string)
-				}
-
 				if LogLevel > 0 {
 					log.Printf("Error encountered from Pingpp: %v\n", err)
 				}

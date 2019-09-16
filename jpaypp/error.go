@@ -10,11 +10,14 @@ type (
 	ErrorStatus string
 	// 错误的状代码
 	ErrorMessage string
+	// 错误的状代码
+	ErrorData string
+
 	// 错误的数据结构
 	Error struct {
-		Status         ErrorStatus `json:"status"`
-		Message            string    `json:"message"`
-		Data           string    `json:"param,omitempty"`
+		Status         string `json:"status"`
+		Message        string `json:"message"`
+		Data           string `json:"param,omitempty"`
 	}
 )
 
