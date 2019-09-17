@@ -5,17 +5,16 @@ import (
 	"net/url"
 	"strconv"
 	"time"
-
 	jpaypp "github.com/jpaypp/jpaypp-go/jpaypp"
 )
 
 type Client struct {
-	B   jpaypp.Backend
+	B   jpaypp.BackEnd
 	Key string
 }
 
 func getC() Client {
-	return Client{jpaypp.GetBackend(jpaypp.APIBackend), jpaypp.Key}
+	return Client{jpaypp.GetBackend(jpaypp.APIBackEnd), jpaypp.Key}
 }
 
 // 发送 charge 请求
@@ -23,7 +22,7 @@ func New(pars *jpaypp.ChargePars) (*jpaypp.Charge, error) {
 	return getC().New(pars)
 }
 
-func (c Client) New(params *jpaypp.ChargeParams) (*jpaypp.Charge, error) {
+func (c Client) New(params *jpaypp.ChargePars) (*jpaypp.Charge, error) {
 	start := time.Now()
 	paramsString, errs := jpaypp.JsonEncode(params)
 	if errs != nil {
@@ -59,7 +58,7 @@ func (c Client) Reverse(id string) (*jpaypp.Charge, error) {
 	var body *url.Values
 	body = &url.Values{}
 	charge := &jpaypp.Charge{}
-	err := c.B.Call("POST", "/charges/"+id+"/reverse", c.Key, body, nil, charge)
+	err := c.B.Call("POST", "/charges/reverse", c.Key, body, nil, charge)
 	if err != nil {
 		if jpaypp.LogLevel > 0 {
 			log.Printf("Reverse Charge error: %v\n", err)
